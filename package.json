@@ -1,0 +1,47 @@
+{
+  "name": "blog.zhuanpu.xyz",
+  "version": "1.0.0",
+  "description": "abel blog",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/htcqp802/blog.zhuanpu.xyz.git"
+  },
+  "keywords": [
+    "vue",
+    "gulp",
+    "node",
+    "webpack",
+    "ejs"
+  ],
+  "author": "Abel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/htcqp802/blog.zhuanpu.xyz/issues"
+  },
+  "homepage": "https://github.com/htcqp802/blog.zhuanpu.xyz#readme",
+  "scripts": {
+    "start": "node bin/www",
+    "build": "node build/build"
+  },
+  "dependencies": {
+    "assets-webpack-plugin": "^3.4.0",
+    "body-parser": "~1.13.2",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "del": "^2.2.1",
+    "ejs": "^2.5.1",
+    "express": "~4.13.1",
+    "gulp": "^3.9.1",
+    "morgan": "~1.6.1",
+    "serve-favicon": "~2.3.0",
+    "vue": "^1.0.26",
+    "webpack": "^1.13.1"
+  },
+  "devDependencies": {
+    "gulp-rev-replace": "^0.4.3",
+    "gulp-util": "^3.0.7",
+    "piping": "^0.3.2",
+    "through2": "^2.0.1"
+  }
+}
