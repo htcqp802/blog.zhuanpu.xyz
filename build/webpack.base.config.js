@@ -8,21 +8,28 @@ module.exports = {
     // devtool: 'source-map',
     output: {
         path: 'static',
-        filename: '[name].js'
+        filename: 'js/[name].js'
     },
     module: {
         loaders: [
-            // { test: /\.js$/, exclude: /node_modules/, loader: 'babel' },
+            { test: /\.js$/, exclude: /node_modules/, loader: 'babel' },
             {
                 test: /\.less$/,
-                loader: ExtractTextPlugin.extract('style','css!less')
+                loader: ExtractTextPlugin.extract('css!less')
             }
         ],
+    },
+    resolve: {
+        extensions: ['', '.js'],
+        alias: {
+            'styles': path.resolve(__dirname, '../app/assets/styles'),
+            'components': path.resolve(__dirname, '../app/components')
+        }
     }
-    ,plugins: [
+    , plugins: [
         new AssetsPlugin(),
-        new ExtractTextPlugin('[name].css')
-        ]
+        new ExtractTextPlugin('css/[name].css')
+    ]
 }
 
 

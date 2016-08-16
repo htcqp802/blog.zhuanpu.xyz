@@ -42,26 +42,11 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(1);
-	__webpack_require__(5);
-	console.log(1111);
-
-/***/ },
-/* 1 */
 /***/ function(module, exports) {
 
-	// removed by extract-text-webpack-plugin
+	"use strict";
 
-/***/ },
-/* 2 */,
-/* 3 */,
-/* 4 */,
-/* 5 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
+	console.log(111);
 
 /***/ }
 /******/ ]);
