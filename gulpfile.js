@@ -9,11 +9,6 @@ var path = require('path');
 var config = require('./config');
 var webpackConfig = require('./build/webpack.base.config');
 
-var option = {
-    src:'app/',
-    dist:'dist/'
-}
-
 gulp.task('webpack', function () {
     webpack(webpackConfig, function (err, stats) {
         if (err) throw err
@@ -27,28 +22,34 @@ gulp.task('webpack', function () {
     })
 })
 
-gulp.task('replace', function () {
-    var assets = JSON.parse(fs.readFileSync('./webpack-assets.json'));
-    gulp.src(option.src+'/**/*.ejs').pipe(
+
+gulp.task('html', function () {
+    gulp.src('app/containers/**/*.html').pipe(
         through.obj(function (file, enc, cb) {
-        Object.keys(assets).forEach(function (key) {
-            if (path.resolve(__dirname,option.src,key) === path.dirname(file.path)) {
-                var contents = file.contents.toString('utf-8');
-                var array = contents.split('\n');
-                if(array[array.length-1] === '') array.pop();
-                array.splice(-1,0,'<script src="'+option.dist + assets[key]['js'] +'"></script>');
-                contents = array.join('\n');
-                file.contents = new Buffer(contents);
+            var base = path.join(__dirname, 'app/containers');
+            var contents = file.contents.toString('utf-8');
+            var regHead = /<begin([^>]*)>/g;
+            var regFoot = /<\/begin>/g;
+            if (regHead.test(contents)) {
+                var dirname = path.dirname(file.path.split('containers/')[1]);
+                var footHead = contents.match(regHead)[0];
+                var headname = footHead.match(/head\=([\"\'])(.*?)\1/)[2];
+                var footname = footHead.match(/foot\=([\"\'])(.*?)\1/)[2];
+                var headPath = path.relative(path.join(base, dirname), path.join(base, 'layout', headname));
+                var footPath = path.relative(path.join(base, dirname), path.join(base, 'layout', footname));
+                contents = contents.replace(regHead, '<%-include("' + headPath + '.html",{css:["css/' + dirname + '.css"]})%>')
+                    .replace(regFoot, '<%-include("' + footPath + '.html",{js:["js/' + dirname + '.js"]})%>')
             }
+            file.contents = new Buffer(contents);
+            this.push(file);
+            cb();
         })
-        this.push(file);
-        cb();
-    })
-    ).pipe(gulp.dest('./app/'))
+    )
+        .pipe(gulp.dest('./views'))
 })
 
 gulp.task('clean', function (cb) {
-    del(['static/**/*'], cb);
+    del(['static/**/*', 'views/**/*'], cb);
 })
 
-gulp.task('default', ['clean', 'webpack','replace']);
+gulp.task('default', ['clean', 'less', 'js', 'img', 'html']);

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%=title%>
+    </title>
+    <% css.map(linkCss)%>
+        <% function linkCss( cssHref ) {%>
+            <link rel="stylesheet" href=<%=cssHref %> >
+            <% } %>
+</head>
+
+<body>
