@@ -1,1 +1,1 @@
-{"index":{"js":"js/index.js"},"index/test":{"js":"js/index/test.js"}}
+{"base":{"js":"js/base.js","css":"css/base.css"},"common":{"js":"js/common.js"},"home":{"js":"js/home.js","css":"css/home.css"}}

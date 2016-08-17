@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(config.static));
 app.use('/', function(req,res){
-    res.render('index',{
+    res.render('home',{
         title:"test"
     })
 });
