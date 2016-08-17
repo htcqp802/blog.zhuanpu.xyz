@@ -52,4 +52,4 @@ gulp.task('clean', function (cb) {
     del(['static/**/*', 'views/**/*'], cb);
 })
 
-gulp.task('default', ['clean', 'less', 'js', 'img', 'html']);
+gulp.task('default', ['clean','webpack','html']);

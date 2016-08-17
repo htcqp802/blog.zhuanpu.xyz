@@ -8,7 +8,8 @@ var base = {
 
     //全局目录
     alias: {
-        component: path.resolve(__dirname, '../app/component')
+        component: path.resolve(__dirname, '../app/component'),
+        img:path.resolve(__dirname, '../app/assets/images')
     },
 
     //公共文件目录
