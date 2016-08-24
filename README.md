@@ -4,9 +4,9 @@ app中的container是主要入口目录
 此目录中的文件下只要有index.html文件(之后统称为page文件) 就会新建为路由  
 e.g. 路由/home 会访问 /container/home/index.html  
 
-每一个page都会被当做独立的域，当中必须包含一个入口文件index.js和一个视图文件index.html  
-所有的引用都应该通过index.js进行import引用
-在视图文件中 无需手动引用index.js 只需引用布局文件（也就是头和尾）  
+每一个page都会被当做独立的域，当中必须包含一个control入口文件index.js和一个view入口文件index.html及样式入口文件index.less  
+所有的引用都应该通过index进行引用
+在视图文件中 无需手动引用index 只需引用布局文件（也就是头和尾）  
 e.g.  
 ```
     <begin head='head' foot='foot'>

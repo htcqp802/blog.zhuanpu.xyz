@@ -9,7 +9,7 @@ var config = require('../config');
 var app = express();
 
 // view engine setup
-app.set('views', path.resolve(__dirname,'..','views'));
+app.set('views',config.views);
 app.engine('.html', require('ejs').__express);  
 app.set('view engine', 'html');
 // uncomment after placing your favicon in /public

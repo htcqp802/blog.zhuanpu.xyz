@@ -9,17 +9,16 @@ var base = {
     //全局目录
     alias: {
         component: path.resolve(__dirname, '../app/component'),
-        img:path.resolve(__dirname, '../app/assets/images')
+        img: path.resolve(__dirname, '../app/assets/images')
     },
 
     //公共文件目录
     commonPath: path.resolve(__dirname, '../app/container/base'),
 
     //编译后的静态资源目录
-    static: path.resolve(__dirname, '../static'),
-
-    //编译后的模板目录
-    views: path.resolve(__dirname, '../views')
+    dist:path.resolve(__dirname, '../dist'),
+    static:path.resolve(__dirname, '../dist/static'),
+    views:path.resolve(__dirname, '../dist/views')
 }
 
 //公共模块

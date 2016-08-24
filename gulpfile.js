@@ -7,7 +7,7 @@ var fs = require('fs');
 var path = require('path');
 
 var config = require('./config');
-var webpackConfig = require('./build/webpack.base.config');
+var webpackConfig = require('./build/webpack.prod.config');
 
 gulp.task('webpack', function () {
     webpack(webpackConfig, function (err, stats) {
