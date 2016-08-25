@@ -9,7 +9,7 @@ var config = require('../config');
 var app = express();
 
 // view engine setup
-app.set('views',config.views);
+app.set('views',config.dist.views);
 app.engine('.html', require('ejs').__express);  
 app.set('view engine', 'html');
 // uncomment after placing your favicon in /public
@@ -18,7 +18,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(config.static));
+app.use(express.static(config.dist.static));
 app.use('/', function(req,res){
     res.render('home',{
         title:"test"

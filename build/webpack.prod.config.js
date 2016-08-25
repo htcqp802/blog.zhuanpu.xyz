@@ -1,16 +1,14 @@
 var path = require('path')
 var glob = require('glob');
 var webpack = require('webpack');
-// var AssetsPlugin = require('assets-webpack-plugin');
-var AssetsPlugin = require('./webpack.assets.plugin');
-// var CleanPlugin = require('clean-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var AssetsPlugin = require('assets-webpack-plugin');
 var config = require('../config');
 module.exports = {
     entry: getEntery(),
     // devtool: 'source-map',
     output: {
-        path: config.static,
+        // path: config.dist.static,
         filename: 'js/[name].[hash].js'
     },
     module: {
@@ -41,14 +39,14 @@ module.exports = {
     }
     , plugins: [
         // new CleanPlugin([config.static],{root:path.resolve(__dirname, '..')}),
-        new webpack.DefinePlugin({
-            'process.env': 'production'
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        }),
+        // new webpack.DefinePlugin({
+        //     'process.env': 'production'
+        // }),
+        // new webpack.optimize.UglifyJsPlugin({
+        //     compress: {
+        //         warnings: false
+        //     }
+        // }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.DedupePlugin(),
         new ExtractTextPlugin('css/[name].[hash].css'),

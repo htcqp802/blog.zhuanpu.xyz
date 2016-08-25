@@ -1,7 +1,7 @@
 var path = require('path');
 var base = {
     //需编译文件的入口目录
-    compilePath: path.resolve(__dirname, '../app/container'),
+    compilePath: path.resolve(__dirname, '../app/container/'),
 
     //需编译文件的入口文件名
     compileFilename: 'index',
@@ -16,9 +16,16 @@ var base = {
     commonPath: path.resolve(__dirname, '../app/container/base'),
 
     //编译后的静态资源目录
-    dist:path.resolve(__dirname, '../dist'),
-    static:path.resolve(__dirname, '../dist/static'),
-    views:path.resolve(__dirname, '../dist/views')
+    dist:{
+        root:path.resolve(__dirname,'../dist'),
+        static:path.resolve(__dirname,'../dist/static'),
+        views:path.resolve(__dirname,'../dist/views'),
+    },
+    compiled:{
+        root:path.resolve(__dirname,'../compiled'),
+        static:path.resolve(__dirname,'../compiled/static'),
+        views:path.resolve(__dirname,'../compiled/views'),
+    }
 }
 
 //公共模块
