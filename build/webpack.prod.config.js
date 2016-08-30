@@ -39,14 +39,14 @@ module.exports = {
     }
     , plugins: [
         // new CleanPlugin([config.static],{root:path.resolve(__dirname, '..')}),
-        // new webpack.DefinePlugin({
-        //     'process.env': 'production'
-        // }),
-        // new webpack.optimize.UglifyJsPlugin({
-        //     compress: {
-        //         warnings: false
-        //     }
-        // }),
+        new webpack.DefinePlugin({
+            'process.env': 'production'
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.DedupePlugin(),
         new ExtractTextPlugin('css/[name].[hash].css'),
