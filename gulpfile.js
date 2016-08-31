@@ -23,7 +23,7 @@ gulp.task('webpack', ['clean'], function () {
 /**
  * 根据config中的配置 将公共文件引入页面头尾
  */
-gulp.task('common', ['webpack'], function () {
+gulp.task('common', ['webpack', 'html'], function () {
     var assets = require('./webpack-assets.json');
     return gulp.src(config.commonPath + '/**/*.html', { base: config.compilePath })
         .pipe(
@@ -89,7 +89,13 @@ gulp.task('clean', function (cb) {
     return del(config.dist.root + '/**/*');
 })
 
+
+
 gulp.task('default', ['clean', 'webpack', 'html', 'common']);
+gulp.task('watch', function () {
+    gulp.watch('./app/**/*', ['clean', 'webpack', 'html', 'common']);
+})
+
 
 function logWebpck(err, stats) {
     if (err) console.log(err);

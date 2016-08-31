@@ -5,16 +5,14 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var AssetsPlugin = require('assets-webpack-plugin');
 var webpackBase = require('./webpack.base.config');
 var config = require('../config');
+
+Object.keys(webpackBase.entry).forEach(function (name) {
+    webpackBase.entry[name] = ['webpack-hot-middleware/client?noInfo=true&reload=true'].concat(webpackBase.entry[name]);
+})
+
 module.exports = merge(webpackBase, {
     plugins: [
-        // new webpack.DefinePlugin({
-        //     'process.env': 'production'
-        // }),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        }),
+        new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.DedupePlugin(),
         new ExtractTextPlugin('css/[name].[hash].css'),
@@ -25,4 +23,3 @@ module.exports = merge(webpackBase, {
         new AssetsPlugin()
     ]
 })
-

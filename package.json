@@ -21,8 +21,8 @@
   },
   "homepage": "https://github.com/htcqp802/blog.zhuanpu.xyz#readme",
   "scripts": {
-    "start": "node bin/www",
-    "build": "node build/build"
+    "start": "NODE_ENV=production node bin/www",
+    "dev": "NODE_ENV=development node bin/www & gulp watch"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -55,6 +55,9 @@
     "style-loader": "^0.13.1",
     "through2": "^2.0.1",
     "url-loader": "^0.5.7",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.12.2",
+    "webpack-merge": "^0.14.1",
     "webpack-stream": "^3.2.0"
   }
 }

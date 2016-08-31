@@ -20,18 +20,13 @@ var base = {
         root:path.resolve(__dirname,'../dist'),
         static:path.resolve(__dirname,'../dist/static'),
         views:path.resolve(__dirname,'../dist/views'),
-    },
-    compiled:{
-        root:path.resolve(__dirname,'../compiled'),
-        static:path.resolve(__dirname,'../compiled/static'),
-        views:path.resolve(__dirname,'../compiled/views'),
     }
 }
 
 //公共模块
 var commonChunk = {
-    common: ['vue'],
-    base: [base.commonPath + '/base.js', base.commonPath + '/base.less']
+    base: [base.commonPath + '/base.js', base.commonPath + '/base.less'],
+    common: ['vue']
 };
 
 module.exports = Object.assign(base, { commonChunk: commonChunk });
